@@ -1,11 +1,10 @@
-﻿var input = File.ReadAllText("sample");
+﻿var lines = ReadInput.parse("sample");
+var size = lines.Max(line =>
+  (new int[] { line.start.x, line.start.y, line.end.x, line.end.y, }).Max()
+);
+var map = new Map(size);
 
-var lines = input
-  .Split("\n")
-  .Select(line => line
-    .Split(" -> ")
-    .Select(coords => coords
-      .Split(",")
-      .Select(num => Int32.Parse(num))));
+foreach (var line in lines) map.DrawLine(line, true);
 
-Console.WriteLine(input);
+Console.WriteLine(map.ToString());
+Console.WriteLine($"Score: {map.getScore()}");
