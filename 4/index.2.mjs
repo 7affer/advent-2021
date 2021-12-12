@@ -18,18 +18,20 @@ let i = 0;
 while (i < numbers.length) {
   const value = numbers[i];
 
+  // Check numbers
+  playBoards = playBoards.map((board) => markBoard(board, value));
+
   const winningBoard = playBoards.find(checkBoard);
   if (winningBoard) {
     lastWinningScore = calculateScore(winningBoard, value);
-    printBoard(winningBoard, value);
-    console.log(value);
-    console.log(lastWinningScore);
+    // printBoard(winningBoard, value);
   }
 
-  playBoards = playBoards
-    .filter((board) => !checkBoard(board))
-    .map((board) => markBoard(board, value));
+  // filter out winning
+  playBoards = playBoards.filter((board) => !checkBoard(board));
 
   if (winningBoards.length === boards.length) break;
   i++;
 }
+
+console.log(lastWinningScore);

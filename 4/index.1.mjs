@@ -6,7 +6,7 @@ import {
   calculateScore,
 } from './boardFunctions.mjs';
 
-const { numbers, boards } = await readInput('input');
+const { numbers, boards } = await readInput('sample');
 
 let playBoards = boards.map(createPlayBoard);
 
